@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import UserList from "./components/userList/UserList";
 import UserForm from "./components/UserForm/UserForm";
 

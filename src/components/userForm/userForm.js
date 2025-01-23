@@ -56,60 +56,51 @@ const UserForm = ({ initialData = null, onSave, onCancel }) => {
 
   return (
     <div className="container my-4">
-      <h2 className="text-xl font-bold mb-4">
-        {initialData ? "Edit User" : "Add User"}
-      </h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium mb-1">Name</label>
+      <h2 className="mb-4">{initialData ? "Edit User" : "Add User"}</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label className="form-label">Name</label>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full border border-gray-300 rounded px-3 py-2"
+            className={`form-control ${errors.name ? "is-invalid" : ""}`}
           />
-          {errors.name && (
-            <p className="text-red-500 text-sm mt-1">{errors.name}</p>
-          )}
+          {errors.name && <div className="invalid-feedback">{errors.name}</div>}
         </div>
-        <div>
-          <label className="block text-sm font-medium mb-1">Email</label>
+        <div className="mb-3">
+          <label className="form-label">Email</label>
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full border border-gray-300 rounded px-3 py-2"
+            className={`form-control ${errors.email ? "is-invalid" : ""}`}
           />
           {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            <div className="invalid-feedback">{errors.email}</div>
           )}
         </div>
-        <div>
-          <label className="block text-sm font-medium mb-1">Age</label>
+        <div className="mb-3">
+          <label className="form-label">Age</label>
           <input
             type="number"
             name="age"
             value={formData.age}
             onChange={handleChange}
-            className="w-full border border-gray-300 rounded px-3 py-2"
+            className={`form-control ${errors.age ? "is-invalid" : ""}`}
           />
-          {errors.age && (
-            <p className="text-red-500 text-sm mt-1">{errors.age}</p>
-          )}
+          {errors.age && <div className="invalid-feedback">{errors.age}</div>}
         </div>
-        <div className="flex space-x-4">
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
-          >
+        <div className="d-flex gap-2">
+          <button type="submit" className="btn btn-primary">
             Save
           </button>
           <button
             type="button"
             onClick={onCancel}
-            className="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-500"
+            className="btn btn-secondary"
           >
             Cancel
           </button>
