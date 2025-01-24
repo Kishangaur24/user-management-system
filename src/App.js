@@ -19,8 +19,12 @@ const App = () => {
     console.log("Editing user:", user);
   };
 
+
   const handleDelete = (id) => {
-    setUsers(users.filter((user) => user.id !== id));
+    const confirmDelete = window.confirm("Are you sure you want to delete this user?");
+    if (confirmDelete) {
+      setUsers(users.filter((user) => user.id !== id));
+    }
   };
 
   const handleSave = (user) => {
